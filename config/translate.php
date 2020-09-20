@@ -1,17 +1,4 @@
-# Translate for PHP
-
----
-
-## Installing
-
-```shell
-$ composer require kinghang/translate -v
-```
-
-### configuration 
-
-```php
-// config/translate.php
+<?php
 
 return [
     // 使用什么翻译驱动
@@ -21,8 +8,8 @@ return [
      **/
 
     'defaults' => [
-        'driver' => 'google',   //默认使用google翻译
-        'spare_driver' => 'baidu',  // 备用翻译api ,第一个翻译失败情况下，调用备用翻译服务，填写备用翻译api 需要在下面对应的drivers中配置你参数
+        'driver' => 'youdao',   //默认使用google翻译
+        'spare_driver' => 'youdao',  // 备用翻译api ,第一个翻译失败情况下，调用备用翻译服务，填写备用翻译api 需要在下面对应的drivers中配置你参数
         'from' => 'zh',   //原文本语言类型 ，目前支持：auto【自动检测】,en【英语】,zh【中文】，jp【日语】,ko【韩语】，fr【法语】，ru【俄文】，pt【西班牙】
         'to' => 'en',     //翻译文本 ：en【英语】,zh【中文】，jp【日语】,ko【韩语】，fr【法语】，ru【俄文】，pt【西班牙】,
     ],
@@ -47,45 +34,3 @@ return [
         ],
     ],
 ];
-
-```
-
-
-## Usage
-
-
-```php
-use KingHang\Translate\TranslateService;
-
-$config = include($youerpath.'/translate.php');
-
-$obj = new TranslateService($config);
-$result = $obj->translate('你知道我对你不仅仅是喜欢');
-print_r($result);
-
-```
-
-
-Example:
-
-```php
- // 动态更改翻译服务商
- $config = include($youerpath.'/translate.php');
- $obj = new TranslateService($config);
- $obj->driver('baidu')->translate('你知道我对你不仅仅是喜欢');
- print_r($result);
- //You know I'm not just like you
- 
- // 动态更改语种
- 
- $from = 'en';
- $to = 'zh';
- $result =  $obj->driver('baidu')->from($from)->to($to)->translate('I love you.');
-print_r($result);
-
-```
-
-## License
-
-MIT
-
