@@ -47,8 +47,8 @@ class YouDao implements TranslateInterface
         $this->source = $source;
         $this->httpClient = new Client($this->options); // Create HTTP client
         $data = $this->getData($string);
-        $response = $this->httpClient->request('GET', $this->base_url, [
-            'query' => $data
+        $response = $this->httpClient->request('POST', $this->base_url, [
+            'form_params' => $data
         ]);
         $result = json_decode($response->getBody(), true);
         return $this->response($result);
@@ -69,7 +69,7 @@ class YouDao implements TranslateInterface
             if ($this->source) {
                 return $result;
             }
-            return $result['translation'];
+            return $result['translation'][0];
         }
 
         throw new TranslateException(10003);
@@ -101,7 +101,17 @@ class YouDao implements TranslateInterface
      */
     private function getSign($string, $time)
     {
-        $str = $this->app_id . $string . $time . $this->app_key;
+        $str = $this->app_id . $this->handleString($string) . $time . $time . $this->app_key;
         return hash('sha256', $str);
+    }
+
+    private function handleString($string)
+    {
+        $length = mb_strlen($string);
+        if ($length > 20) {
+            return mb_substr($string, 0, 10) . $length . mb_substr($string, -10);
+        }
+
+        return $string;
     }
 }

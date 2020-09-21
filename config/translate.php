@@ -8,15 +8,15 @@ return [
      **/
 
     'defaults' => [
-        'driver' => 'youdao',   //默认使用google翻译
-        'spare_driver' => 'youdao',  // 备用翻译api ,第一个翻译失败情况下，调用备用翻译服务，填写备用翻译api 需要在下面对应的drivers中配置你参数
+        'driver' => 'google',   //默认使用google翻译
+        'spare_driver' => 'baidu',  // 备用翻译api ,第一个翻译失败情况下，调用备用翻译服务，填写备用翻译api 需要在下面对应的drivers中配置你参数
         'from' => 'zh',   //原文本语言类型 ，目前支持：auto【自动检测】,en【英语】,zh【中文】，jp【日语】,ko【韩语】，fr【法语】，ru【俄文】，pt【西班牙】
         'to' => 'en',     //翻译文本 ：en【英语】,zh【中文】，jp【日语】,ko【韩语】，fr【法语】，ru【俄文】，pt【西班牙】,
     ],
 
     'drivers' => [
         'baidu' => [
-            'base_url' => 'http://api.fanyi.baidu.com/api/trans/vip/translate',
+            'base_url' => 'https://api.fanyi.baidu.com/api/trans/vip/translate',
             'app_id' => '',
             'app_key' => '',
         ],

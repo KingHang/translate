@@ -26,7 +26,7 @@ class TranslateService implements TranslateInterface
 
     private $config;
 
-    private $options = [];
+    private $options = ['verify' => false];
 
     private $from;
 
@@ -67,7 +67,7 @@ class TranslateService implements TranslateInterface
 
     public function options($options = [])
     {
-        $this->options = $options;
+        $this->options = array_merge($this->options, $options);
         return $this;
     }
 

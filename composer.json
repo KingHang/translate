@@ -3,7 +3,8 @@
     "description": "集成百度翻译，有道翻译，Google 翻译的composer package",
     "require": {
         "stichoza/google-translate-php": "^4.1.1",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5.20",

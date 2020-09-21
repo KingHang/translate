@@ -35,15 +35,15 @@ class TranslateTest extends TestCase
     {
         echo PHP_EOL . "发送push 中...." . PHP_EOL;
         try {
-            $result = $this->instance->translate('你知道我对你不仅仅是喜欢');
+            $result = $this->instance->translate('我爱你！');
             print_r($result);
             $this->assertEquals(
-                "You know I don't just like you",
+                "I love you!",
                 $result
             );
         } catch (Exception $e) {
             $err = "Error : 错误：" . $e->getMessage();
-            $this->returnValue($err . PHP_EOL);
+            echo $err;
         }
     }
 }
