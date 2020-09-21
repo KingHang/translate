@@ -5,7 +5,7 @@
 ## Installing
 
 ```shell
-$ composer require kinghang/translate -v
+$ composer require kinghang/translate
 ```
 
 ### configuration 
@@ -29,7 +29,7 @@ return [
 
     'drivers' => [
         'baidu' => [
-            'base_url' => 'http://api.fanyi.baidu.com/api/trans/vip/translate',
+            'base_url' => 'https://api.fanyi.baidu.com/api/trans/vip/translate',
             'app_id' => '',
             'app_key' => '',
         ],
